@@ -27,10 +27,10 @@ public class OfferItem {
     private int quantity;
 
     public OfferItem(Product product, int quantity, Money totalCost) {
-        this(product, quantity,null, totalCost);
+        this(product, quantity, null, totalCost);
     }
 
-    public OfferItem(Product product, int quantity, Discount discount,Money totalCost ) {
+    public OfferItem(Product product, int quantity, Discount discount, Money totalCost) {
         this.product = product;
         this.quantity = quantity;
         this.discount = discount;
@@ -79,17 +79,16 @@ public class OfferItem {
     }
 
     /**
-     *
      * @param other
      * @param delta acceptable percentage difference
      * @return returns true if product offers are the same and false if product offers are different
      */
     public boolean sameAs(OfferItem other, double delta) {
-        if(product == null){
-            if(other.product != null){
+        if (product == null) {
+            if (other.product != null) {
                 return false;
             }
-        } else if (!product.sameAs(other.product)){
+        } else if (!product.sameAs(other.product)) {
             return false;
         }
 
