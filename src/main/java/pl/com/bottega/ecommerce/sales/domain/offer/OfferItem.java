@@ -62,8 +62,7 @@ public class OfferItem {
             discountValue = discountValue.add(discount);
         }
 
-        this.totalCost = productPrice.multiply(new BigDecimal(quantity))
-                                     .subtract(discountValue);
+        this.totalCost = productPrice.multiply(new BigDecimal(quantity)).subtract(discountValue);
     }
 
     public String getProductId() {
@@ -138,7 +137,7 @@ public class OfferItem {
 
     /**
      *
-     * @param item
+     * @param other
      * @param delta
      *            acceptable percentage difference
      * @return
