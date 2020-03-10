@@ -76,4 +76,9 @@ public class Product {
                 && Objects.equals(snapshotDate, other.getSnapshotDate())
                 && Objects.equals(type, other.getType());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, price, name, snapshotDate, type);
+    }
 }
