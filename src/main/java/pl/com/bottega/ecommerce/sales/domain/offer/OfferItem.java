@@ -18,16 +18,11 @@ import java.util.Objects;
 
 public class OfferItem {
 
-    // product
-    //private String productId;
+    private Product product;
 
-    //private BigDecimal productPrice;
+    private Discount discount;
 
-    //private String productName;
-
-    //private Date productSnapshotDate;
-
-    //private String productType;
+    private Money totalCost;
 
     private int quantity;
 
@@ -40,29 +35,22 @@ public class OfferItem {
 
     //private BigDecimal discount;
 
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType,
-            int quantity) {
-        this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
+    public OfferItem(Product product, int quantity) {
+        this(product, quantity, null);
     }
 
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType,
-            int quantity, BigDecimal discount, String discountCause) {
-        this.productId = productId;
-        this.productPrice = productPrice;
-        this.productName = productName;
-        this.productSnapshotDate = productSnapshotDate;
-        this.productType = productType;
-
+    public OfferItem(Product product, int quantity, Discount discount) {
+        this.product = product;
         this.quantity = quantity;
         this.discount = discount;
-        this.discountCause = discountCause;
+        //this.discountCause = discountCause;
 
         BigDecimal discountValue = new BigDecimal(0);
         if (discount != null) {
-            discountValue = discountValue.add(discount);
+            discountValue = discountValue.add(discount.getValue().getValue());
         }
 
-        this.totalCost = productPrice.multiply(new BigDecimal(quantity)).subtract(discountValue);
+        this.totalCost.setValue(product.getPrice().getValue().multiply(new BigDecimal(quantity)).subtract(discountValue));
     }
 
     public String getProductId() {

@@ -2,26 +2,26 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 
 public class Discount {
     private String cause;
-    private Money ammount;
+    private Money value;
 
-    public Discount(String cause, Money ammount) {
+    public Discount(String cause, Money value) {
         this.cause = cause;
-        this.ammount = ammount;
+        this.value = value;
     }
 
     public String getCause() {
         return cause;
     }
 
-    public Money getAmmount() {
-        return ammount;
+    public Money getValue() {
+        return value;
     }
 
     public void setCause(String cause) {
         this.cause = cause;
     }
 
-    public void setAmmount(Money ammount) {
-        this.ammount = ammount;
+    public void setValue(Money value) {
+        this.value = value;
     }
 }
