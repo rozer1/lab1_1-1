@@ -1,4 +1,4 @@
 package pl.com.bottega.ecommerce.sales.domain.offer;
 
-public class ProductData {
+public class Product {
 }
