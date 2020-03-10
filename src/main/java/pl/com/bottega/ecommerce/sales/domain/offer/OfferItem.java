@@ -36,9 +36,9 @@ public class OfferItem {
     //private String currency;
 
     // discount
-    private String discountCause;
+    //private String discountCause;
 
-    private BigDecimal discount;
+    //private BigDecimal discount;
 
     public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType,
             int quantity) {
