@@ -26,15 +26,6 @@ public class OfferItem {
 
     private int quantity;
 
-    //private BigDecimal totalCost;
-
-    //private String currency;
-
-    // discount
-    //private String discountCause;
-
-    //private BigDecimal discount;
-
     public OfferItem(Product product, int quantity) {
         this(product, quantity, null);
     }
@@ -53,40 +44,16 @@ public class OfferItem {
         this.totalCost.setValue(product.getPrice().getValue().multiply(new BigDecimal(quantity)).subtract(discountValue));
     }
 
-    public String getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public BigDecimal getProductPrice() {
-        return productPrice;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public Date getProductSnapshotDate() {
-        return productSnapshotDate;
-    }
-
-    public String getProductType() {
-        return productType;
-    }
-
-    public BigDecimal getTotalCost() {
-        return totalCost;
-    }
-
-    public String getTotalCostCurrency() {
-        return currency;
-    }
-
-    public BigDecimal getDiscount() {
+    public Discount getDiscount() {
         return discount;
     }
 
-    public String getDiscountCause() {
-        return discountCause;
+    public Money getTotalCost() {
+        return totalCost;
     }
 
     public int getQuantity() {
@@ -111,16 +78,10 @@ public class OfferItem {
             return false;
         }
         OfferItem other = (OfferItem) obj;
-        return Objects.equals(currency, other.currency)
+        return Objects.equals(product, other.getProduct())
                && Objects.equals(discount, other.discount)
-               && Objects.equals(discountCause, other.discountCause)
-               && Objects.equals(productId, other.productId)
-               && Objects.equals(productName, other.productName)
-               && Objects.equals(productPrice, other.productPrice)
-               && Objects.equals(productSnapshotDate, other.productSnapshotDate)
-               && Objects.equals(productType, other.productType)
-               && quantity == other.quantity
-               && Objects.equals(totalCost, other.totalCost);
+               && Objects.equals(totalCost, other.getTotalCost())
+               && quantity == other.quantity;
     }
 
     /**
