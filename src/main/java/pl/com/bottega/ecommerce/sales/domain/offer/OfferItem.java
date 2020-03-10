@@ -26,22 +26,19 @@ public class OfferItem {
 
     private int quantity;
 
-    public OfferItem(Product product, int quantity) {
-        this(product, quantity, null);
+    public OfferItem(Product product, int quantity, Money totalCost) {
+        this(product, quantity,null, totalCost);
     }
 
-    public OfferItem(Product product, int quantity, Discount discount) {
+    public OfferItem(Product product, int quantity, Discount discount,Money totalCost ) {
         this.product = product;
         this.quantity = quantity;
         this.discount = discount;
+        this.totalCost = totalCost;
         //this.discountCause = discountCause;
 
-        BigDecimal discountValue = new BigDecimal(0);
-        if (discount != null) {
-            discountValue = discountValue.add(discount.getValue().getValue());
-        }
 
-        this.totalCost.setValue(product.getPrice().getValue().multiply(new BigDecimal(quantity)).subtract(discountValue));
+        this.totalCost.setValue(product.getPrice().multiply(new BigDecimal(quantity)).subtract(discount.getValue().getValue()));
     }
 
     public Product getProduct() {
@@ -84,9 +81,8 @@ public class OfferItem {
     /**
      *
      * @param other
-     * @param delta
-     *            acceptable percentage difference
-     * @return
+     * @param delta acceptable percentage difference
+     * @return returns true if product offers are the same and false if product offers are different
      */
     public boolean sameAs(OfferItem other, double delta) {
         if(product == null){

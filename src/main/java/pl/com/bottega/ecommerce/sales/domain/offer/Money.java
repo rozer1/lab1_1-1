@@ -53,4 +53,8 @@ public class Money {
     public int hashCode() {
         return Objects.hash(value, currency);
     }
+
+    public BigDecimal multiply(BigDecimal value){
+        return this.getValue().multiply(value);
+    }
 }
